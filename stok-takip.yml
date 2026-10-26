@@ -1,0 +1,46 @@
+name: Amazon stok takibi
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # her saat başı 17. dakikada (UTC)
+  workflow_dispatch:        # Actions sekmesinden elle çalıştırmak için
+
+permissions:
+  contents: write           # state.json dosyasını kaydedebilmek için
+
+concurrency:
+  group: stok-takip
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bağımlılıkları kur
+        run: pip install -r requirements.txt
+
+      - name: Stokları kontrol et
+        run: python stock_watcher.py
+        env:
+          WISHLIST_URLS: ${{ secrets.WISHLIST_URLS }}
+          PRODUCT_URLS: ${{ secrets.PRODUCT_URLS }}
+          COUNT_OTHER_SELLERS: ${{ vars.COUNT_OTHER_SELLERS }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+
+      - name: Durumu kaydet
+        run: |
+          git config user.name "stok-bot"
+          git config user.email "stok-bot@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet || (git commit -m "Stok durumu güncellendi" && git push)
