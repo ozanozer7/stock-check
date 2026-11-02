@@ -24,6 +24,11 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
+try:  # Chrome'un bağlantı imzasını taklit eder; Amazon engellerini azaltır
+    from curl_cffi import requests as browser_requests
+except ImportError:
+    browser_requests = None
+
 BASE = "https://www.amazon.com.tr"
 STATE_FILE = os.environ.get("STATE_FILE", "state.json")
 MAX_WISHLIST_PAGES = 20
@@ -62,14 +67,40 @@ class Blocked(Exception):
 # HTTP
 # --------------------------------------------------------------------------
 
-session = requests.Session()
-session.headers.update(
-    {
-        "User-Agent": USER_AGENT,
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.6",
-    }
-)
+if browser_requests is not None:
+    session = browser_requests.Session(impersonate="chrome")
+    session.headers.update({"Accept-Language": "tr-TR,tr;q=0.9,en;q=0.6"})
+    print("Bağlantı: curl_cffi (Chrome taklidi)")
+else:
+    session = requests.Session()
+    session.headers.update(
+        {
+            "User-Agent": USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.6",
+        }
+    )
+    print("Bağlantı: requests (curl_cffi kurulu değil)")
+
+_warmed_up = False
+
+
+def warm_up():
+    """Ana sayfayı bir kez ziyaret edip çerezleri alır (gerçek ziyaretçi gibi)."""
+    global _warmed_up
+    if _warmed_up:
+        return
+    _warmed_up = True
+    try:
+        session.get(BASE + "/", timeout=30)
+        time.sleep(random.uniform(2, 4))
+    except Exception as exc:
+        print(f"Not: Ana sayfa ziyareti başarısız ({exc})")
+
+
+def page_title(html):
+    match = re.search(r"<title[^>]*>(.*?)</title>", html, re.S | re.I)
+    return match.group(1).strip()[:80] if match else "?"
 
 
 def looks_blocked(html):
@@ -82,20 +113,28 @@ def looks_blocked(html):
 
 
 def fetch(url, retries=3):
+    warm_up()
     last_error = None
     for attempt in range(1, retries + 1):
         try:
             response = session.get(url, timeout=30)
-            if response.status_code in (503, 429) or looks_blocked(response.text):
-                last_error = Blocked(f"Engellendi: {url}")
-            elif response.status_code == 404:
+            status = response.status_code
+            if status in (503, 429) or looks_blocked(response.text):
+                kind = "CAPTCHA" if looks_blocked(response.text) else f"HTTP {status}"
+                last_error = Blocked(
+                    f"{kind}, deneme {attempt}/{retries}, sayfa başlığı: "
+                    f"'{page_title(response.text)}', adres: {url}"
+                )
+                print(f"  ...engel: {last_error}")
+            elif status == 404:
                 return None
+            elif status >= 400:
+                last_error = RuntimeError(f"HTTP {status}")
             else:
-                response.raise_for_status()
                 return response.text
-        except requests.RequestException as exc:
+        except Exception as exc:
             last_error = exc
-        time.sleep(5 * attempt + random.uniform(0, 3))
+        time.sleep(8 * attempt + random.uniform(0, 4))
     if isinstance(last_error, Blocked):
         raise last_error
     raise RuntimeError(f"İstek başarısız: {url} ({last_error})")
