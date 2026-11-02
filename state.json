@@ -1,1 +1,5 @@
-{"products": {}, "blocked_streak": 0, "initialized": false}
+{
+  "blocked_streak": 1,
+  "initialized": false,
+  "products": {}
+}
