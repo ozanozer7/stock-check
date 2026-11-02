@@ -1,44 +1,85 @@
 {
   "blocked_streak": 0,
   "initialized": true,
+  "last_summary_date": "2026-11-02",
   "products": {
     "B015MSY2OO": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/81+OAdIOSyL._AC_SL1500_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "SONGMICS 50'li Paket Kadife Askı 0,6 cm Kalınlıkta Takım Elbise Askısı, Kaymaz Yüzeyli, Iki Çentikli, 360 Derece Dönen Kanca Kaymaz Gri Crf50V"
     },
     "B07CRP6CKW": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/71xDDF0xtlL._AC_SL1500_.jpg",
+      "price": "1.429,00TL",
       "status": "in_stock",
       "title": "SONGMICS Kadife Elbise Askısı, 30'lu Set, Askı, Ceket Askısı, 41,5 cm Genişliğinde, Elbise Askısı, Ince, 360° Dönebilen Kanca, Mont, Gömlek ve Takım Elbise İçin, Beyaz Crf026W02"
     },
     "B07CRQRWT1": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/71xDDF0xtlL._AC_SL1500_.jpg",
+      "price": "1.429,00TL",
       "status": "in_stock",
       "title": "SONGMICS Kadife Elbise Askısı, 30'lu Set, Askı, Ceket Askısı, 41,5 cm Genişliğinde, Elbise Askısı, Ince, 360° Dönebilen Kanca, Mont, Gömlek ve Takım Elbise İçin, Beyaz Crf026W02"
     },
     "B07QKS2CDW": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/7195WoPUfWL._AC_SL1500_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "Songmics 50 Adet Kadife Askı, Kaymaz Askı Pembe Altın Döner Kanca, 0,6 cm kalınlık, Yerden Tasarruf, 45 cm uzunluk, Uzun Ceket Gömlek Etek Pantolon Kravat için, Siyah CRF21BK50"
     },
     "B07SYP4SZZ": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/7195WoPUfWL._AC_SL1500_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "Songmics 50 Adet Kadife Askı, Kaymaz Askı Pembe Altın Döner Kanca, 0,6 cm kalınlık, Yerden Tasarruf, 45 cm uzunluk, Uzun Ceket Gömlek Etek Pantolon Kravat için, Siyah CRF21BK50"
     },
     "B089NGXH6T": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/81-8ht+kvuL._AC_SL1500_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "SONGMICS Elbise askısı kadife, 50'li set, ceket askısı, 41,5 cm genişliğinde, elbise askısı, ince, 360° dönebilen kanca, manto, gömlek ve takım elbise için, pembe-gümüş CRF026P03"
     },
     "B093H24952": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/81rYKzZs80L._AC_SL1500_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "SONGMICS Kadife Çocuk Askıları 30'lu Paket Açık Pembe CRF027P30"
     },
     "B0GVZZ2DPZ": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/71UV0NFqaDL._AC_SL1500_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "SONGMICS Kadife Elbise Askısı 20'li Set Kaymaz Küçük Bağlantı Demiri 360° Dönen Kanca 0,6 cm Kalın Yerden Tasarruf 43,5 cm Uzun Coats Pantolon için Gümüş Gri CRF20V (2 paketi)"
     },
     "B0GWFFPGG6": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/71W8KTGEVKL._AC_SL1500_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "SONGMICS Kadife Elbise Askısı 20'li Set Kaymaz Küçük Bağlantı Çubuğu 360° Dönen Kanca 0,6 cm Kalın Yerden Tasarruf 43,5 cm Uzun Coats Pantolon için Gümüş Siyah CRF20B (2 paketi)"
     },
     "B0HLGFH7NG": {
+      "changed_at": "2026-11-02T09:47+03:00",
+      "checked_at": "2026-11-02T09:47+03:00",
+      "image": "https://m.media-amazon.com/images/I/61BAHaIvNiL._AC_SL1001_.jpg",
+      "price": "",
       "status": "out_of_stock",
       "title": "SONGMICS Kadife Elbise Askısı, 30'lu Set, Askı, Ceket Askısı, 41,5 cm Genişliğinde, Elbise Askısı, Ince, 360° Dönebilen Kanca, Mont, Gömlek ve Takım Elbise İçin, Beyaz Crf026W02 (3 paketi)"
     }
