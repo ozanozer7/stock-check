@@ -38,7 +38,19 @@ Depo → **Settings → Secrets and variables → Actions → New repository sec
 
 Kullanmadığınız kanalın ayarlarını boş bırakmanız yeterli.
 
-İsteğe bağlı: Ürün Amazon'da yokken başka satıcılarda bulunduğunda da haber almak isterseniz **Variables** sekmesinde `COUNT_OTHER_SELLERS` = `true` ekleyin.
+İsteğe bağlı ayarlar (**Variables** sekmesi → **New repository variable**):
+
+| Ad | Değer |
+|---|---|
+| `SUMMARY_HOUR` | Günlük özet raporun geleceği saat, Türkiye saatiyle (varsayılan `9`). Kapatmak için `off`. |
+| `COUNT_OTHER_SELLERS` | `true` ise ürün yalnızca başka satıcılarda bulunduğunda da "stoğa girdi" sayılır. |
+
+## Bildirimler
+
+- **Stoğa giriş uyarısı:** Bir ürün stoğa girdiğinde hemen gelir. Yeni giren ürünler en üstte yeşil kutuda, altında tüm listenin tablosu yer alır.
+- **Günlük rapor:** Her gün belirlediğiniz saatte tüm ürünlerin görsel, fiyat ve stok durumunu gösteren tablo.
+- Durum renkleri: 🟢 Stokta · 🟡 Diğer satıcılarda · 🔴 Stokta yok · ⚪ Kontrol edilemedi. "Değişiklik" sütunu ürünün durumunun en son ne zaman değiştiğini gösterir.
+
 
 ## 5. Başlatın
 
