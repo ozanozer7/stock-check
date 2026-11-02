@@ -32,6 +32,7 @@ jobs:
           WISHLIST_URLS: ${{ secrets.WISHLIST_URLS }}
           PRODUCT_URLS: ${{ secrets.PRODUCT_URLS }}
           COUNT_OTHER_SELLERS: ${{ vars.COUNT_OTHER_SELLERS }}
+          SUMMARY_HOUR: ${{ vars.SUMMARY_HOUR }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
